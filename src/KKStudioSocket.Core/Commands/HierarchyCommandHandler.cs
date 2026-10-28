@@ -99,7 +99,7 @@ namespace KKStudioSocket.Commands
                 // Trigger change amount update for visual refresh                     
                 childOci.objectInfo.changeAmount.OnChange();
 
-                Studio.Studio.Instance.m_TreeNodeCtrl.SetParent(childOci.treeNodeObject, parentOci.treeNodeObject);
+                Studio.Studio.Instance.treeNodeCtrl.SetParent(childOci.treeNodeObject, parentOci.treeNodeObject);
 
                 KKStudioSocketPlugin.Logger.LogDebug($"Object {cmd.childId} attached to parent {cmd.parentId}");
                 SendSuccessResponse($"Object {cmd.childId} attached to parent {cmd.parentId}");
@@ -147,7 +147,7 @@ namespace KKStudioSocket.Commands
                         try
                         {
                             KKStudioSocketPlugin.Logger.LogDebug("Updating UI tree...");
-                            var treeCtrl = Studio.Studio.Instance.m_TreeNodeCtrl;
+                            var treeCtrl = Studio.Studio.Instance.treeNodeCtrl;
                             treeCtrl.SelectSingle(oci.treeNodeObject);
                             treeCtrl.RemoveNode();
                             KKStudioSocketPlugin.Logger.LogDebug("UI tree update completed");

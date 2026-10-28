@@ -22,7 +22,7 @@ namespace KKStudioSocket
     {
         public const string GUID = "KKStudioSocket";
         public const string Name = "KKStudioSocket";
-        public const string Version = "1.0.0";
+        public const string Version = "1.2.1";
 
         private const int DefaultPort = 8765;
         private const string DefaultPath = "/ws";
@@ -47,9 +47,9 @@ namespace KKStudioSocket
         {
             if (KKAPI.KoikatuAPI.GetCurrentGameMode() == GameMode.Studio)
             {
-                if (this._studio == null && Studio.Studio.instance != null)
+                if (this._studio == null && Studio.Studio.Instance != null)
                 {
-                    this._studio = Studio.Studio.instance;
+                    this._studio = Studio.Studio.Instance;
                     Logger.LogInfo("Studio instance seems to be initialized. Starting WebSocket Server.");
 
                     _serverBindAddress = Config.Bind("Server", "BindAddress", DefaultBindAddress, "IP address for the WebSocket server to bind to");
@@ -225,6 +225,16 @@ namespace KKStudioSocket
                                 deleteHandler.Handle(deleteCmd);
                             });
                         }
+                        break;
+
+                    case "character_animation":
+                        var animationJson = e.Data;
+                        EnqueueAction(() => new MmddCommandHandler(Send).Handle(animationJson, "character_animation_mcp_bridge.py"));
+                        break;
+
+                    case "mmdd":
+                        var requestJson = e.Data;
+                        EnqueueAction(() => new MmddCommandHandler(Send).Handle(requestJson));
                         break;
 
                     case "camera":

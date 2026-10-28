@@ -207,7 +207,7 @@ namespace KKStudioSocket.Commands
                 // Auto-select if option is enabled (like Studio.AddCamera())
                 if (Studio.Studio.optionSystem.autoSelect && newCamera != null)
                 {
-                    studio.m_TreeNodeCtrl.SelectSingle(newCamera.treeNodeObject);
+                    studio.treeNodeCtrl.SelectSingle(newCamera.treeNodeObject);
                 }
 
                 // If name is specified, rename the camera

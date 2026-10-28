@@ -405,7 +405,9 @@ namespace KKStudioSocket.Commands
                                 else
                                 {
                                     // Fallback: normal UpdateInfo call
-                                    mpLightCtrl.UpdateInfo();
+                                    typeof(MPLightCtrl).GetMethod("UpdateInfo",
+                                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance)
+                                        .Invoke(mpLightCtrl, null);
                                 }
                             }
                         }

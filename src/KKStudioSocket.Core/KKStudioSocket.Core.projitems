@@ -19,6 +19,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\HierarchyCommandHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\DeleteCommandHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CameraCommandHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\MmddCommandHandler.cs" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Bridge\mmdd_mcp_bridge.py" LogicalName="KKStudioSocket.mmdd_mcp_bridge.py" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Bridge\character_animation_mcp_bridge.py" LogicalName="KKStudioSocket.character_animation_mcp_bridge.py" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\ItemCommandHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\ScreenshotCommandHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Requests.cs" />
